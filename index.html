@@ -23,18 +23,12 @@
             padding-bottom: 50px;
         }
 
-        /* قلوب متطايرة في الخلفية */
         .heart-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1;
         }
 
-        /* الأسطر الخمسة في البداية */
         .intro-section {
             height: 100vh;
             display: flex;
@@ -52,7 +46,6 @@
             text-shadow: 2px 2px 5px rgba(255, 77, 109, 0.3);
         }
 
-        /* العداد */
         #timer-container {
             background: white;
             padding: 30px;
@@ -83,7 +76,6 @@
             color: var(--primary-color);
         }
 
-        /* الكروت - الإصلاح النهائي هنا */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -100,22 +92,19 @@
 
         .card-inner {
             position: relative;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             text-align: center;
             transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
 
-        /* حركة القلب عند إضافة كلاس open */
         .card-box.open .card-inner {
             transform: rotateY(180deg);
         }
 
         .card-front, .card-back {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             backface-visibility: hidden;
             display: flex;
             align-items: center;
@@ -141,7 +130,6 @@
             font-size: 1.3rem;
             line-height: 1.5;
         }
-
     </style>
 </head>
 <body>
@@ -154,11 +142,11 @@
         <div class="intro-text" data-aos="zoom-in" data-aos-delay="600">بـتـنـفـسـك</div>
         <div class="intro-text" data-aos="zoom-in" data-aos-delay="800">بـهـواكـي</div>
         <div class="intro-text" data-aos="zoom-in" data-aos-delay="1000">بـمـوت فـيـكـي</div>
-        <p style="margin-top: 30px; color: #ff8fa3; font-weight: bold; animation: bounce 2s infinite;">انزلي تحت يا روحي 👇</p>
+        <p style="margin-top: 30px; color: #ff8fa3; font-weight: bold;">انزلي تحت يا روحي 👇</p>
     </div>
 
     <div id="timer-container" data-aos="fade-up">
-        <h2 style="color: #444; margin-bottom: 20px;">الوقت الذي قضيناه معاً ❤️</h2>
+        <h2 style="color: #444; margin-bottom: 20px;">أجمل شهر في حياتي ❤️</h2>
         <div class="time-unit"><span id="days">0</span> يوم</div>
         <div class="time-unit"><span id="hours">0</span> ساعة</div>
         <div class="time-unit"><span id="minutes">0</span> دقيقة</div>
@@ -197,15 +185,12 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // تشغيل مكتبة الأنميشن
         AOS.init({ duration: 1000, once: true });
 
-        // وظيفة فتح الكروت
         function toggleCard(card) {
             card.classList.toggle('open');
         }
 
-        // إنشاء قلوب تتساقط
         function createHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️';
@@ -217,17 +202,16 @@
             heart.style.zIndex = "-1";
             heart.style.transition = 'transform 6s linear, opacity 6s';
             document.getElementById('heartContainer').appendChild(heart);
-
             setTimeout(() => {
                 heart.style.transform = `translateY(110vh) rotate(${Math.random() * 360}deg)`;
             }, 100);
-
             setTimeout(() => { heart.remove(); }, 6000);
         }
         setInterval(createHeart, 400);
 
-        // تاريخ البداية
-        const startDate = new Date(2024, 0, 1); 
+        // --- تعديل التاريخ هنا ليكون منذ شهر تقريباً ---
+        // (السنة، الشهر - 1، اليوم) -> شهر 1 يعني فبراير
+        const startDate = new Date(2026, 1, 11); 
 
         function updateTimer() {
             const now = new Date();
@@ -240,4 +224,6 @@
         }
         setInterval(updateTimer, 1000);
         updateTimer();
-    </script
+    </script>
+</body>
+</html>
