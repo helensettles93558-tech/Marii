@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg-color);
             margin: 0;
             overflow-x: hidden;
@@ -34,7 +34,7 @@
             z-index: -1;
         }
 
-        /* الأسطر الخمسة بأنيميشن */
+        /* الأسطر الخمسة في البداية */
         .intro-section {
             height: 100vh;
             display: flex;
@@ -45,47 +45,48 @@
         }
 
         .intro-text {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: bold;
             color: var(--primary-color);
-            margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin: 8px 0;
+            text-shadow: 2px 2px 5px rgba(255, 77, 109, 0.3);
         }
 
-        /* العداد بحركة نبض */
+        /* العداد */
         #timer-container {
             background: white;
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
             margin: 50px 0;
             animation: pulse 2s infinite;
+            text-align: center;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            50% { transform: scale(1.03); }
             100% { transform: scale(1); }
         }
 
         .time-unit {
             display: inline-block;
-            margin: 0 15px;
-            font-size: 1.2rem;
+            margin: 0 12px;
+            font-size: 1.1rem;
             color: #555;
         }
 
         .time-unit span {
             display: block;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 900;
             color: var(--primary-color);
         }
 
-        /* الكروت بحركة 3D */
+        /* الكروت - الإصلاح النهائي هنا */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
             width: 90%;
             max-width: 1000px;
@@ -93,7 +94,7 @@
 
         .card-box {
             perspective: 1000px;
-            height: 200px;
+            height: 220px;
             cursor: pointer;
         }
 
@@ -102,14 +103,13 @@
             width: 100%;
             height: 100%;
             text-align: center;
-            transition: transform 0.8s;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 15px;
         }
 
+        /* حركة القلب عند إضافة كلاس open */
         .card-box.open .card-inner {
-            transform: rotateY(180px);
+            transform: rotateY(180deg);
         }
 
         .card-front, .card-back {
@@ -120,23 +120,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 15px;
-            font-size: 1.5rem;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 25px;
             box-sizing: border-box;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
         .card-front {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
         }
 
         .card-back {
             background: white;
-            color: var(--primary-color);
+            color: #444;
             transform: rotateY(180deg);
             border: 2px solid var(--primary-color);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            line-height: 1.5;
         }
 
     </style>
@@ -146,16 +149,16 @@
     <div class="heart-bg" id="heartContainer"></div>
 
     <div class="intro-section">
-        <div class="intro-text" data-aos="fade-up" data-aos-delay="200">بـحـبـك</div>
-        <div class="intro-text" data-aos="fade-up" data-aos-delay="400">بـعـشـقـك</div>
-        <div class="intro-text" data-aos="fade-up" data-aos-delay="600">بـتـنـفـسـك</div>
-        <div class="intro-text" data-aos="fade-up" data-aos-delay="800">بـهـواكـي</div>
-        <div class="intro-text" data-aos="fade-up" data-aos-delay="1000">بـمـوت فـيـكـي</div>
-        <p style="margin-top: 20px; color: #888;">(انزل لتحت 👇)</p>
+        <div class="intro-text" data-aos="zoom-in" data-aos-delay="200">بـحـبـك</div>
+        <div class="intro-text" data-aos="zoom-in" data-aos-delay="400">بـعـشـقـك</div>
+        <div class="intro-text" data-aos="zoom-in" data-aos-delay="600">بـتـنـفـسـك</div>
+        <div class="intro-text" data-aos="zoom-in" data-aos-delay="800">بـهـواكـي</div>
+        <div class="intro-text" data-aos="zoom-in" data-aos-delay="1000">بـمـوت فـيـكـي</div>
+        <p style="margin-top: 30px; color: #ff8fa3; font-weight: bold; animation: bounce 2s infinite;">انزلي تحت يا روحي 👇</p>
     </div>
 
-    <div id="timer-container" data-aos="zoom-in">
-        <h2 style="color: #444;">الوقت الذي قضيناه معاً ❤️</h2>
+    <div id="timer-container" data-aos="fade-up">
+        <h2 style="color: #444; margin-bottom: 20px;">الوقت الذي قضيناه معاً ❤️</h2>
         <div class="time-unit"><span id="days">0</span> يوم</div>
         <div class="time-unit"><span id="hours">0</span> ساعة</div>
         <div class="time-unit"><span id="minutes">0</span> دقيقة</div>
@@ -163,25 +166,28 @@
     </div>
 
     <div class="cards-grid">
-        <div class="card-box" onclick="this.classList.toggle('open')" data-aos="flip-left">
+        <div class="card-box" onclick="toggleCard(this)" data-aos="flip-up">
             <div class="card-inner">
                 <div class="card-front">أول لقاء 💌</div>
-                <div class="card-back">الفرحة الاولي و الاخيرة و عمري مهحسها غير و انا معاكي</div>
+                <div class="card-back">الفرحة الأولى والأخيرة وعمري ما هحسها غير وأنا معاكي</div>
             </div>
         </div>
-        <div class="card-box" onclick="this.classList.toggle('open')" data-aos="flip-right">
+        
+        <div class="card-box" onclick="toggleCard(this)" data-aos="flip-up" data-aos-delay="200">
             <div class="card-inner">
                 <div class="card-front">ضحكتك ✨</div>
-                <div class="card-back">بموت في ضحكتك و بتخليني ديما فرحان و مبتسم</div>
+                <div class="card-back">بموت في ضحكتك وبتخليني دايماً فرحان ومبتسم</div>
             </div>
         </div>
-        <div class="card-box" onclick="this.classList.toggle('open')" data-aos="flip-left">
+
+        <div class="card-box" onclick="toggleCard(this)" data-aos="flip-up" data-aos-delay="400">
             <div class="card-inner">
                 <div class="card-front">وعد لكِ 💍</div>
-                <div class="card-back">هفضل معاكي للابد</div>
+                <div class="card-back">هفضل معاكي للأبد مهما حصل</div>
             </div>
         </div>
-        <div class="card-box" onclick="this.classList.toggle('open')" data-aos="flip-right">
+
+        <div class="card-box" onclick="toggleCard(this)" data-aos="flip-up" data-aos-delay="600">
             <div class="card-inner">
                 <div class="card-front">سرنا ❤️</div>
                 <div class="card-back">ربع سانتي و 15 سنة</div>
@@ -191,7 +197,13 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200 });
+        // تشغيل مكتبة الأنميشن
+        AOS.init({ duration: 1000, once: true });
+
+        // وظيفة فتح الكروت
+        function toggleCard(card) {
+            card.classList.toggle('open');
+        }
 
         // إنشاء قلوب تتساقط
         function createHeart() {
@@ -202,7 +214,8 @@
             heart.style.top = '-20px';
             heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
             heart.style.opacity = Math.random();
-            heart.style.transition = 'transform 5s linear, opacity 5s';
+            heart.style.zIndex = "-1";
+            heart.style.transition = 'transform 6s linear, opacity 6s';
             document.getElementById('heartContainer').appendChild(heart);
 
             setTimeout(() => {
@@ -211,14 +224,15 @@
 
             setTimeout(() => { heart.remove(); }, 6000);
         }
-        setInterval(createHeart, 300);
+        setInterval(createHeart, 400);
 
-        // تاريخ البداية (غيره لتاريخكم الحقيقي)
+        // تاريخ البداية
         const startDate = new Date(2024, 0, 1); 
 
         function updateTimer() {
             const now = new Date();
             const diff = now - startDate;
+            
             document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
             document.getElementById('hours').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
             document.getElementById('minutes').innerText = Math.floor((diff / (1000 * 60)) % 60);
@@ -226,6 +240,4 @@
         }
         setInterval(updateTimer, 1000);
         updateTimer();
-    </script>
-</body>
-</html>
+    </script
